@@ -22,6 +22,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
+
 implements LoaderManager.LoaderCallbacks<Cursor>
 {
     private static final int EDITOR_REQUEST_CODE = 1001;
