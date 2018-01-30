@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Key_Notes</string>
+    <string name="create_sample_data">Create sample data</string>
+    <string name="delete_all_notes">Delete all notes</string>
+    <string name="are_you_sure_all_delete">Are you sure you want to delete all the notes?</string>
+    <string name="all_deleted">All notes deleted</string>
+    <string name="new_note">New note</string>
+    <string name="note_updated">Note updated</string>
+    <string name="action_delete">Delete note</string>
+    <string name="note_deleted">Note deleted</string>
+    <string name="note">Note</string>
+    <string name="start_typing_here">Start typing here…</string>
+</resources>
