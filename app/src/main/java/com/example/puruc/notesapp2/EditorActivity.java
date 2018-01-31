@@ -34,6 +34,7 @@ public class EditorActivity extends AppCompatActivity {
             setTitle(getString(R.string.new_note));
         }
         else {
+            setTitle(R.string.note);
             action = Intent.ACTION_EDIT;
             noteFilter = DBOpenHelper.NOTE_ID + "=" + uri.getLastPathSegment();
 
@@ -46,8 +47,9 @@ public class EditorActivity extends AppCompatActivity {
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_editor, menu);
         if (action.equals(Intent.ACTION_EDIT)){
-            getMenuInflater().inflate(R.menu.menu_editor, menu);
+            menu.findItem(R.id.action_delete).setVisible(true);
         }
         return true;
     }
@@ -62,6 +64,10 @@ public class EditorActivity extends AppCompatActivity {
                 break;
             case R.id.action_delete:
                 deleteNote();
+                Toast.makeText(this, R.string.note_deleted, Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.action_save:
+                finishedEditing();
                 break;
         }
 
@@ -70,7 +76,6 @@ public class EditorActivity extends AppCompatActivity {
 
     private void deleteNote() {
         getContentResolver().delete(NotesProvider.CONTENT_URI, noteFilter, null);
-        Toast.makeText(this, R.string.note_deleted, Toast.LENGTH_SHORT).show();
         setResult(RESULT_OK);
         finish();
     }
@@ -82,14 +87,17 @@ public class EditorActivity extends AppCompatActivity {
             case Intent.ACTION_INSERT:
                 if (newText.length() == 0){
                     setResult(RESULT_CANCELED);
+                    Toast.makeText(this, R.string.not_saved, Toast.LENGTH_SHORT).show();
                 }
                 else {
                     insertNote(newText);
+                    Toast.makeText(this, R.string.note_saved, Toast.LENGTH_SHORT).show();
                 }
                 break;
             case Intent.ACTION_EDIT:
                 if (newText.length() == 0) {
                     deleteNote();
+                    Toast.makeText(this, R.string.not_saved, Toast.LENGTH_SHORT).show();
                 }
                 else if (oldText.equals(newText)){
                     setResult(RESULT_CANCELED);

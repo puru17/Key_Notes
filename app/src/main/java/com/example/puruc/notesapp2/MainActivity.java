@@ -51,12 +51,12 @@ implements LoaderManager.LoaderCallbacks<Cursor>
         getSupportLoaderManager().initLoader(0, null, this);
     }
 
-    private void newNote(String noteText) {
+    /*private void newNote(String noteText) {
         ContentValues values = new ContentValues();
         values.put(DBOpenHelper.NOTE_TEXT, noteText);
         Uri noteUri = getContentResolver().insert(NotesProvider.CONTENT_URI, values);
 
-    }
+    }*/
 
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
